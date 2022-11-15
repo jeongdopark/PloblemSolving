@@ -1,7 +1,18 @@
-let test = Array.from(new Array(5), (_, i) => i+1); 
+const solution = (number, k) => {
+    stack = []
+    for(let i=0; i<number.length; i++){
+        while(k > 0 && stack.length > 0 && stack[stack.length-1] < number[i]){
+            stack.pop()
+            k -= 1
+        }
+        stack.push(number[i])
+    }
 
-let test2 = Array.from(new Set(['hello', 'hi']))
+    while(k > 0){
+        stack.pop()
+        k -= 1
+    }
+    return stack.join('')
+}
 
-let test3 = Array.from(Array(5), () => new Array(2).fill(0))
-
-console.log(test3);
+console.log(solution("4321", 1));
