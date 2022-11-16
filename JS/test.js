@@ -1,18 +1,18 @@
-const solution = (number, k) => {
-    stack = []
-    for(let i=0; i<number.length; i++){
-        while(k > 0 && stack.length > 0 && stack[stack.length-1] < number[i]){
-            stack.pop()
-            k -= 1
-        }
-        stack.push(number[i])
+const gcd = (a, b) => {
+    let r;
+    while( b != 0){
+        r = a%b;
+        a = b
+        b = r
     }
-
-    while(k > 0){
-        stack.pop()
-        k -= 1
-    }
-    return stack.join('')
+    return a
 }
 
-console.log(solution("4321", 1));
+const gcd_recursion = (a, b) => {
+    if(a%b !== 0){
+        return gcd_recursion(b, a%b)
+    }
+    return b
+}
+
+console.log(gcd_recursion(68, 12));
